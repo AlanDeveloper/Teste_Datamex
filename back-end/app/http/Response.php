@@ -6,10 +6,10 @@ class Response {
 
     private $httpCode = 200;
     private $headers = [];
-    private $contentType = 'text/html';
+    private $contentType = 'application/json';
     private $content;
 
-    public function __construct($httpCode, $content, $contentType = 'text/html') {
+    public function __construct($httpCode, $content, $contentType = 'application/json') {
         $this->httpCode = $httpCode;
         $this->content = $content;
         $this->setContentType($contentType);
@@ -27,16 +27,16 @@ class Response {
     private function sendHeaders() {
         http_response_code($this->httpCode);
 
-        // foreach ($this->headers as $key => $value) {
-        //     header($key.': '.$value);
-        // }
+        foreach ($this->headers as $key => $value) {
+            header($key.': '.$value);
+        }
     }
 
     public function sendResponse() {
         $this->sendHeaders();
         switch ($this->contentType) {
-            case 'text/html':
-                echo $this->content;
+            case 'application/json':
+                echo json_encode($this->content);
                 exit;
         }
     }

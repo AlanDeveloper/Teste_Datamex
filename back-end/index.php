@@ -12,7 +12,7 @@ use \App\Controller\CollaboratorController;
 $router = new Router;
 
 $router->get('/', function() {
-    return new Response(200, Controller::index());
+    return Controller::index();
 });
 
 // $router->get('/colaborador', function() {
