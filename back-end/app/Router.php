@@ -34,19 +34,9 @@ class Router {
         return $_SERVER['REQUEST_METHOD'];
     }
 
-    private function getRoute() {
-        // PEGAR A ROTA DO LINK
-        $url = explode('/', $_SERVER['REQUEST_URI'])[1];
-        $url = str_replace("/$url", '', $_SERVER['REQUEST_URI']);
-
-        return $url;
-    }
-
     public function run() {
         $method = self::getMethod();
-        $route = self::getRoute();
-
-		$route = "/";
+        $route = $_SERVER['REQUEST_URI'];
 
         $route = explode('?', $route)[0];
         if($method === 'DELETE' || $method === 'PUT') {
