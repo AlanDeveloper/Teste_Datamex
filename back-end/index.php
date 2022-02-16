@@ -5,6 +5,7 @@ require __DIR__.'/vendor/autoload.php';
 use \App\Router;
 use \App\Controller\Controller;
 use \App\Controller\PeopleController;
+use \App\Controller\ChildrenController;
 
 $router = new Router;
 
@@ -23,6 +24,16 @@ $router->post('/people', function() {
 });
 $router->delete('/people/{nome}', function($nome) {
     return PeopleController::delete($nome);
+});
+
+$router->get('/children', function() {
+    return ChildrenController::index();
+});
+$router->get('/children/{nome}', function($nome) {
+    return ChildrenController::show($nome);
+});
+$router->post('/children', function() {
+    return ChildrenController::store();
 });
 
 $router->run()->sendResponse();
