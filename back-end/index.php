@@ -15,6 +15,10 @@ $router->get('/', function() {
     return Controller::index();
 });
 
+$router->get('/product/{id}', function($id) {
+    return Controller::teste($id);
+});
+
 // $router->get('/colaborador', function() {
 //     return new Response(200, CollaboratorController::index());
 // });

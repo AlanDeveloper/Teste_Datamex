@@ -39,7 +39,7 @@ class Router {
         $route = $_SERVER['REQUEST_URI'];
 
         $route = explode('?', $route)[0];
-        if($method === 'DELETE' || $method === 'PUT') {
+        if($method === 'GET' || $method === 'DELETE' || $method === 'PUT') {
             $args = ['id' => filter_var($route, FILTER_SANITIZE_NUMBER_INT)];
         } else {
             $args = [];
