@@ -39,13 +39,13 @@ class Router {
         $route = $_SERVER['REQUEST_URI'];
 
         $route = explode('?', $route)[0];
-        if($method === 'GET' || $method === 'DELETE' || $method === 'PUT') {
-            $args = ['id' => filter_var($route, FILTER_SANITIZE_NUMBER_INT)];
+        if(($method === 'GET' || $method === 'DELETE' || $method === 'PUT') && count(explode('/', $route)) > 2) {
+			$args = ['nome' => explode('/', $route)[2]];
+			$route = str_replace('/' . $args['nome'], '/{nome}', $route);
         } else {
             $args = [];
         }
         
-        $route = preg_replace('/\d+/u', '{id}', $route);
 
         if (!isset($this->routes[$method])) return new Response(500, array("error" => ["message" => "Método não registrado!"]));
         if (!isset($this->routes[$method][$route])) return new Response(404, array("error" => ["message" => "Página não encontrada!"]));

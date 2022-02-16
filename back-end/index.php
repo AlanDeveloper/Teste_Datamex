@@ -3,11 +3,8 @@
 require __DIR__.'/vendor/autoload.php';
 
 use \App\Router;
-use \App\Http\Response;
 use \App\Controller\Controller;
-use \App\Controller\DocsController;
-use \App\Controller\AttachController;
-use \App\Controller\CollaboratorController;
+use \App\Controller\PeopleController;
 
 $router = new Router;
 
@@ -15,35 +12,17 @@ $router->get('/', function() {
     return Controller::index();
 });
 
-$router->get('/product/{id}', function($id) {
-    return Controller::teste($id);
+$router->get('/people', function() {
+    return PeopleController::index();
 });
-
-// $router->get('/colaborador', function() {
-//     return new Response(200, CollaboratorController::index());
-// });
-
-// $router->get('/documentos', function() {
-//     return new Response(200, DocsController::index());
-// });
-// $router->post('/documentos', function() {
-//     return new Response(201, DocsController::store());
-// });
-// $router->delete('/documentos/{id}', function($id) {
-//     return new Response(204, DocsController::delete($id));
-// });
-// $router->put('/documentos/{id}', function($id) {
-//     return new Response(204, DocsController::update($id));
-// });
-
-// $router->get('/anexar', function() {
-//     return new Response(200, AttachController::index());
-// });
-// $router->post('/anexar', function() {
-//     return new Response(201, AttachController::store());
-// });
-// $router->delete('/anexar/{id}', function($id) {
-//     return new Response(204, AttachController::delete($id));
-// });
+$router->get('/people/{nome}', function($nome) {
+    return PeopleController::show($nome);
+});
+$router->post('/people', function() {
+    return PeopleController::store();
+});
+$router->delete('/people/{nome}', function($nome) {
+    return PeopleController::delete($nome);
+});
 
 $router->run()->sendResponse();

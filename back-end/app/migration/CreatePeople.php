@@ -4,16 +4,17 @@ namespace App\Migration;
 
 use App\Model\Model;
 
-class CreateProducts extends Model {
+class CreatePeople extends Model {
 
-	private static $table = 'products';
+	private static $table = 'pessoas';
 
 	public static function up() {
 		$conn = self::connect();
 		$sql = "CREATE TABLE IF NOT EXISTS " . self::$table . " (
-			id INT AUTO_INCREMENT,
-			name VARCHAR(100) NOT NULL,
-			PRIMARY KEY (id)
+			id INT NOT NULL,
+			nome VARCHAR(45) NOT NULL,
+			idade INT NOT NULL CHECK(idade >= 0),
+			PRIMARY KEY (nome)
 		)";
 		$query = $conn->prepare($sql);
 		$query->execute();

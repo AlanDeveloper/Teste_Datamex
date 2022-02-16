@@ -2,19 +2,19 @@
 
 namespace App;
 
-use \App\Migration\CreateProducts;
+use \App\Migration\CreatePeople;
 
 class Migration {
 	
 	public static function createTables() {
 		include "app/config.php";
 
-		CreateProducts::up();
+		CreatePeople::up();
 	}
 	
 	public static function deleteTables() {
 		include "app/config.php";
 
-		CreateProducts::down();
+		CreatePeople::down();
 	}
 }
