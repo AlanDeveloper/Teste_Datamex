@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Exception;
+use App\Http\Response;
 
 class Router {
     
@@ -47,8 +47,8 @@ class Router {
         
         $route = preg_replace('/\d+/u', '{id}', $route);
 
-        if (!isset($this->routes[$method][$route])) throw new Exception('Página não encontrada!');
-        if (!isset($this->routes[$method])) throw new Exception('Método não registrado!');
+        if (!isset($this->routes[$method])) return new Response(500, array("error" => ["message" => "Método não registrado!"]));
+        if (!isset($this->routes[$method][$route])) return new Response(404, array("error" => ["message" => "Página não encontrada!"]));
 
         return call_user_func_array($this->routes[$method][$route], $args);
     }
