@@ -7,7 +7,9 @@
 		}
 	],
 	"scripts": {
-		"start": "php -S localhost:3000"
+		"start": "php -S localhost:3000",
+		"migrate-up": "App\\Migration::createTables",
+		"migrate-down": "App\\Migration::deleteTables"
 	},
 	"config": {
 		"process-timeout": 0
