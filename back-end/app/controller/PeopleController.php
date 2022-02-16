@@ -22,11 +22,6 @@ class PeopleController {
 		return new Response(200, $people);
     }
 
-	public static function update($nome) {
-		Model_People::update($nome);
-		return new Response(204, null);
-    }
-
 	public static function delete($nome) {
 		Model_People::delete($nome);
 		return new Response(204, null);
