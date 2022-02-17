@@ -4,11 +4,15 @@ namespace App\Controller;
 
 use \App\Http\Response;
 use App\Model\Model_People;
+use App\Model\Model_Children;
 
 class PeopleController {
 
 	public static function index() {
 		$peoples = Model_People::find();
+		for ($i=0; $i < count($peoples); $i++) { 
+			$peoples[$i]["nFilhos"] = Model_Children::findById($peoples[$i]["id"]);
+		}
 		return new Response(200, $peoples);
 	}
 	

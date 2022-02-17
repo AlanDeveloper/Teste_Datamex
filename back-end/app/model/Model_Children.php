@@ -41,6 +41,21 @@ class Model_Children extends Model {
         }
     }
 
+	public static function findById($id) {
+		try {
+            $sql = 'SELECT * FROM ' . self::$table . ' WHERE pessoas_id = :id';
+            $conn = self::connect();
+            $query = $conn->prepare($sql);
+            $query->execute(array(
+				'id' => $id
+			));
+    
+            return count($query->fetchAll(PDO::FETCH_ASSOC));
+        } catch (PDOException $e) {
+            return array("error" => $e->getMessage());
+        }
+	}
+
 	public static function find() {
         try {
             $sql = 'SELECT * FROM ' . self::$table;
