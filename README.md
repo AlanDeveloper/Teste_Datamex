@@ -4,5 +4,6 @@ Para utilizar o projeto é necessário rodar o comando:
 
 ```
 > composer install
+> composer migrate-up
 > composer start
 ```

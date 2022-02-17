@@ -1,0 +1,48 @@
+form {
+	display: flex;
+	max-width: 1000px;
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+form input {
+	border-right: 0px;
+	padding: 10px 20px;
+	width: 90%;
+}
+
+form input,
+form input:active,
+form input:focus {
+	outline: none;
+	border-radius: 5px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border: 2px solid #333;
+}
+
+form button {
+	width: 10%;
+	padding: 10px;
+	color: white;
+	cursor: pointer;
+	background-color: #333;
+	border: none;
+	border-radius: 5px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+form button:active {
+	opacity: .9;
+}
+
+@media (max-width: 700px) {
+	form input {
+		width: 80%;
+	}
+
+	form button {
+		width: 20%;
+	}
+}
