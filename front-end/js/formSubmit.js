@@ -1,4 +1,16 @@
+function clearTbody() {
+	$('tbody').remove();
+}
+
 $('#form').submit(function(event) {
-	console.log('submit')
+	$.ajax({
+		url: "http://localhost:3000/people",
+		data: {
+			search: $('input#search').val()
+		}
+	}).done(function (res) {
+		clearTbody();
+		fillTbody(res);
+	});
 	event.preventDefault();
 });
