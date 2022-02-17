@@ -18,6 +18,7 @@ class Response {
     public function setContentType($contentType) {
         $this->contentType = $contentType;
         $this->addHeader('Content-Type', $contentType);
+        $this->addHeader('Access-Control-Allow-Origin', '*');
     }
 
     public function addHeader($key, $value) {
