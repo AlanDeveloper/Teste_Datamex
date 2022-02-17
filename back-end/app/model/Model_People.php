@@ -41,6 +41,21 @@ class Model_People extends Model {
         }
     }
 
+	public static function findMany($nome) {
+        try {
+            $sql = 'SELECT * FROM ' . self::$table . ' WHERE nome like :nome';
+            $conn = self::connect();
+            $query = $conn->prepare($sql);
+            $query->execute(array(
+				'nome' => "%$nome%"
+			));
+    
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return array("error" => $e->getMessage());
+        }
+    }
+
 	public static function find() {
         try {
             $sql = 'SELECT * FROM ' . self::$table;

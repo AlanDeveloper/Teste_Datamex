@@ -22,8 +22,11 @@ class PeopleController {
     }
 
 	public static function show($nome) {
-		$people = Model_People::findOne($nome);
-		return new Response(200, $people);
+		$peoples = Model_People::findMany($nome);
+		for ($i=0; $i < count($peoples); $i++) { 
+			$peoples[$i]["nFilhos"] = Model_Children::findById($peoples[$i]["id"]);
+		}
+		return new Response(200, $peoples);
     }
 
 	public static function delete($nome) {

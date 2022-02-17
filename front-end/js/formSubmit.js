@@ -1,15 +1,14 @@
-function clearTbody() {
-	$('tbody').remove();
-}
-
 $('#form').submit(function(event) {
+	let val = $('input#search').val();
+	let url = "http://localhost:3000/people";
+	
+	if ( val !== "") url = url + "/" + val;
+
 	$.ajax({
-		url: "http://localhost:3000/people",
-		data: {
-			search: $('input#search').val()
-		}
+		url: url,
 	}).done(function (res) {
-		clearTbody();
+		console.log(res)
+		$('tbody').empty()
 		fillTbody(res);
 	});
 	event.preventDefault();

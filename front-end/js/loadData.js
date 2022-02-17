@@ -1,11 +1,11 @@
 function fillTbody(data) {
 	data.forEach((e, index) => {
 		if (index > 4) return;
-		$('tbody').before(`
+		$('tbody').append(`
 			<tr>
-				<td class="text-bold">${e.id}</td>
+				<td class="text-bold">${index + 1}</td>
 				<td>${e.nome}</td>
-				<td>${e.idade}</td>
+				<td>${e.nFilhos}</td>
 			</tr>
 		`);
 	});
@@ -13,7 +13,7 @@ function fillTbody(data) {
 }
 
 function createBottomBar(data) {
-	$('tbody').before(`
+	$('tbody').append(`
 		<tr id="bottomBar">
 			<td class="text-bold" colspan="3">${data.length <= 5 ? 'Existem mais de 5 registros, refine sua pesquisa' : 'Nenhum registro foi encontrado'}</td>
 		</tr>
