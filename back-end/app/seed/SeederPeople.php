@@ -13,7 +13,7 @@ class SeederPeople extends Model {
 	public static function run() {
 		$conn = self::connect();
 		$sql = "INSERT INTO " . self::$table . " (" . implode(", ", self::$columns) . ") VALUES 
-			(1, 'Alan', 21), (2, 'Fulano', 26), (2, 'Ciclano', 17), (1, 'Julia', 24), (3, 'Ciclana', 35), (4, 'Zeca', 31)";
+			(1, 'Alan', 21), (2, 'Fulano', 26), (3, 'Ciclano', 17), (4, 'Julia', 24), (5, 'Ciclana', 35), (6, 'Zeca', 31)";
 		$query = $conn->prepare($sql);
 		$query->execute();
 	}

@@ -18,8 +18,8 @@ class Migration {
 	}
 	
 	public static function deleteTables() {
-		CreatePeople::down();
 		CreateChildren::down();
+		CreatePeople::down();
 	}
 
 	public static function seedTables() {

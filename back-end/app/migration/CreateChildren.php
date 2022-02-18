@@ -16,7 +16,7 @@ class CreateChildren extends Model {
 			idade INT NOT NULL CHECK(idade >= 0),
 			PRIMARY KEY (nome),
 			FOREIGN KEY (pessoas_id) REFERENCES pessoas (id)
-		)";
+		) ENGINE=InnoDB";
 		$query = $conn->prepare($sql);
 		$query->execute();
 	}

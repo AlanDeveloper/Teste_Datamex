@@ -11,11 +11,11 @@ class CreatePeople extends Model {
 	public static function up() {
 		$conn = self::connect();
 		$sql = "CREATE TABLE IF NOT EXISTS " . self::$table . " (
-			id INT NOT NULL,
+			id INT UNIQUE NOT NULL,
 			nome VARCHAR(45) NOT NULL,
 			idade INT NOT NULL CHECK(idade >= 0),
 			PRIMARY KEY (nome)
-		)";
+		) ENGINE=InnoDB";
 		$query = $conn->prepare($sql);
 		$query->execute();
 	}
