@@ -8,7 +8,10 @@
 	],
 	"scripts": {
 		"start": "php -S localhost:3000",
-		"migrate-up": "App\\Migration::createTables",
+		"migrate-up": [
+			"App\\Migration::createTables",
+			"App\\Migration::seedTables"
+		],
 		"migrate-down": "App\\Migration::deleteTables"
 	},
 	"config": {
