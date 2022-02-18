@@ -15,7 +15,7 @@ function fillTbody(data) {
 function createBottomBar(data) {
 	$('tbody').append(`
 		<tr id="bottomBar">
-			<td class="text-bold" colspan="3">${data.length <= 5 ? 'Existem mais de 5 registros, refine sua pesquisa' : 'Nenhum registro foi encontrado'}</td>
+			<td class="text-bold" colspan="3">${data.length > 5 ? 'Existem mais de 5 registros, refine sua pesquisa' : 'Nenhum registro foi encontrado'}</td>
 		</tr>
 	`);
 }
